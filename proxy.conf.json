@@ -1,0 +1,8 @@
+{
+  "/nutritional": {
+    "target": "https://nutri-gateway.azure-api.net",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

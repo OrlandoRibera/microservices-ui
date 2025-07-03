@@ -15,6 +15,6 @@ export class App {
   private _router = inject(Router);
 
   public get showNavbar() {
-    return !this._router.url.startsWith('/login');
+    return !this._router.url.startsWith('/login') && !this._router.url.startsWith('/user/create');
   }
 }

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { LoginService } from './service/login.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { LoginResponse } from './dto/login-response';
+import { ROLES } from '../../../shared/constants/roles.constants';
 
 @Component({
   selector: 'app-login',
@@ -30,14 +32,29 @@ export class LoginComponent {
   public async onSubmit() {
     if (this.loginForm.valid) {
       try {
-        const result = await this._loginService.login(this.loginForm.value);
+        const result: LoginResponse = await this._loginService.login(this.loginForm.value);
         console.log('Login success', result);
         this._authService.setAuthData(result);
-        this._router.navigate(['/catering']);
+
+        this._redirectAfterLogin(result.role);
       } catch (error) {
         console.error('Login failed', error);
         alert('Invalid credentials');
       }
+    }
+  }
+
+  public goToCreateUser() {
+    this._router.navigateByUrl('/user/create');
+  }
+
+  private _redirectAfterLogin(role: string) {
+    if (role === ROLES.NUTRITIONIST)  {
+      this._router.navigate(['/nutritional-plan']);
+    } else if (role === ROLES.COOK) {
+      this._router.navigate(['/catering']);
+    } else {
+      this._router.navigate(['/login']);
     }
   }
 }

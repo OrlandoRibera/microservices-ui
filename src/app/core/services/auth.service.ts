@@ -22,6 +22,10 @@ export class AuthService {
     return localStorage.getItem(this._TOKEN_KEY);
   }
 
+  public getUserId(): string | null {
+    return localStorage.getItem(this._USER_ID);
+  }
+
   public isLoggedIn(): boolean {
     const token = this.getToken();
     const expires = localStorage.getItem(this._TOKEN_EXP_KEY);

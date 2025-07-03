@@ -63,6 +63,10 @@
               "buildTarget": "microservices-ui:build:development"
             }
           },
+          "options": {
+            "proxyConfig": "proxy.conf.json",
+            "open": true
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {

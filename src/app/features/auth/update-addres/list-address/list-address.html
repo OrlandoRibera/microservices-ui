@@ -1,0 +1,21 @@
+<div class="login-container">
+  <div class="login-card">
+    <h1 class="login-title">Lista de Direcciones</h1>
+
+    <div class="address-list" *ngIf="userAddress?.addresses && userAddress!.addresses!.length > 0">
+      <div class="address-item" *ngFor="let address of userAddress!.addresses! ">
+        <div class="address-details">
+          <p><strong>Calle:</strong> {{address.street}}</p>
+          <p><strong>Ciudad:</strong> {{address.city}}</p>
+          <p><strong>Latitud:</strong> {{address.latituded}}</p>
+          <p><strong>Longitud:</strong> {{address.longitud}}</p>
+          <p><strong>Estado:</strong> {{address.status}}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="login-button" (click)="addNewAddress()">Agregar Nueva Dirección</button>
+
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+  </div>
+</div>

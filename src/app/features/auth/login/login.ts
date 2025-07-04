@@ -24,8 +24,8 @@ export class LoginComponent {
 
   constructor() {
     this.loginForm = this._fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ['juan.perez@mail.com', [Validators.required, Validators.email]],
+      password: ['12345678', Validators.required]
     });
   }
 
@@ -49,7 +49,7 @@ export class LoginComponent {
   }
 
   private _redirectAfterLogin(role: string) {
-    if (role === ROLES.NUTRITIONIST)  {
+    if (role === ROLES.NUTRITIONIST) {
       this._router.navigate(['/nutritional-plan']);
     } else if (role === ROLES.COOK) {
       this._router.navigate(['/catering']);

@@ -1,0 +1,35 @@
+<div class="login-container">
+  <div class="login-card">
+    <h1 class="login-title">Modified Address</h1>
+    <form [formGroup]="addresForm" (ngSubmit)="submit()" class="login-form">
+      <div class="form-group">
+        <label for="username">Street</label>
+        <input id="username" formControlName="street" type="text" placeholder="Enter Street" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">City</label>
+        <input id="email" formControlName="city" type="text" placeholder="Enter City" />
+      </div>
+
+      <div class="form-group">
+        <label for="fullName">Latituded</label>
+        <input id="fullName" formControlName="latituded" type="number" step="any" placeholder="Enter Latituded" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Longitud</label>
+        <input id="password" formControlName="longitud" type="number" step="any" placeholder="Enter Longitud" />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Date Delivery</label>
+        <input id="address" formControlName="dateDelivery" type="date" placeholder="Enter Date Delivery" />
+      </div>
+
+      <button type="submit" class="login-button" [disabled]="isSubmitting || addresForm.invalid">Add Address</button>
+    </form>
+
+    <div *ngIf="error" style="color: red; margin-top: 1rem">{{ error }}</div>
+  </div>
+</div>

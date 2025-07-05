@@ -22,6 +22,10 @@ export class AuthService {
     return localStorage.getItem(this._TOKEN_KEY);
   }
 
+  public getUserRole(): string | null {
+    return localStorage.getItem(this._USER_ROLE);
+  }
+
   public getUserId(): string | null {
     return localStorage.getItem(this._USER_ID);
   }

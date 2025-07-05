@@ -16,10 +16,12 @@
       <i class="fa-solid fa-users"></i>
       <span>Users</span>
     </a>
+    @if (role === CLIENT_ROLE) {
     <a routerLink="/user/address-list" routerLinkActive="active" aria-label="Direcciones">
       <i class="fa-solid fa-users"></i>
       <span>Address</span>
     </a>
+    } @if (role === COOK_ROLE) {
     <a routerLink="/catering" routerLinkActive="active" aria-label="Catering">
       <i class="fa-solid fa-carrot"></i>
       <span>Catering</span>
@@ -28,10 +30,12 @@
       <i class="fa-solid fa-calendar-day"></i>
       <span>Calendar</span>
     </a>
+    } @if (role === DELIVERY_ROLE) {
     <a routerLink="/delivery" routerLinkActive="active" aria-label="Catering">
       <i class="fa-solid fa-truck"></i>
       <span>Delivery</span>
     </a>
+    } @if (role === NUTRITIONIST_ROLE) {
     <a routerLink="/nutritional-plan" routerLinkActive="active" aria-label="Catering">
       <i class="fa-solid fa-check"></i>
       <span>Nutritional Plans</span>
@@ -40,5 +44,6 @@
       <i class="fa-solid fa-calendar-check"></i>
       <span>Appointments</span>
     </a>
+    }
   </div>
 </nav>

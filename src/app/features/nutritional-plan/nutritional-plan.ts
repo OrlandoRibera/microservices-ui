@@ -4,17 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NutritionalPlanService } from './service/nutritional-plan.service';
 import { AuthService } from '../../core/services/auth.service';
 import { NutritionalPlanResponse } from './dto/nutritional-plan-response';
+import { CreateNutritionalPlanComponent } from './components/create-nutritional-plan';
 
 @Component({
   selector: 'app-nutritional-plan',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, CreateNutritionalPlanComponent],
   templateUrl: './nutritional-plan.html',
   styleUrls: ['./nutritional-plan.scss']
 })
 export class NutritionalPlanComponent implements OnInit {
   public plans: NutritionalPlanResponse[] = [];
   public isLoading = false;
+  public isCreatingPlan = false;
   public error: string | null = null;
 
   private _nutritionalPlanService = inject(NutritionalPlanService);
@@ -25,14 +27,14 @@ export class NutritionalPlanComponent implements OnInit {
   }
 
   public loadPlans(): void {
-    const clientId = this._authService.getUserId();
-    if (!clientId) {
+    const nutritionistId = this._authService.getUserId();
+    if (!nutritionistId) {
       this.error = 'User ID is missing';
       return;
     }
 
     this.isLoading = true;
-    this._nutritionalPlanService.getPlansByClientId(clientId).subscribe({
+    this._nutritionalPlanService.getPlansByNutritionistId(nutritionistId).subscribe({
       next: (data) => {
         this.plans = data;
         this.isLoading = false;
@@ -43,5 +45,16 @@ export class NutritionalPlanComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  public createPlan(): void {
+    this.isCreatingPlan = true;
+  }
+
+  public handleModalClose(refresh: boolean): void {
+    this.isCreatingPlan = false;
+    if (refresh) {
+      this.loadPlans();
+    }
   }
 }

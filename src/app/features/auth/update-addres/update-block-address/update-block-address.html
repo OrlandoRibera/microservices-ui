@@ -1,6 +1,6 @@
 <div class="login-container">
   <div class="login-card">
-    <h1 class="login-title">Editar Dirección</h1>
+    <h1 class="login-title">Editar fecha bloqueo de Dirección</h1>
 
     <!-- Mostrar ID de la dirección -->
     <div *ngIf="addressId" class="address-info">
@@ -12,15 +12,14 @@
 
     <form [formGroup]="addressBlockForm" (ngSubmit)="submit()" class="login-form">
       <div class="form-group">
-        <label for="toDate">Fecha Hasta</label>
-        <input id="toDate" formControlName="toDate" type="date" placeholder="Seleccionar fecha hasta" />
-      </div>
-
-      <div class="form-group">
         <label for="fromDate">Fecha Desde</label>
         <input id="fromDate" formControlName="fromDate" type="date" placeholder="Seleccionar fecha desde" />
       </div>
 
+      <div class="form-group">
+        <label for="toDate">Fecha Hasta</label>
+        <input id="toDate" formControlName="toDate" type="date" placeholder="Seleccionar fecha hasta" />
+      </div>
       <button type="submit" class="login-button" [disabled]="isSubmitting || addressBlockForm.invalid">
         {{ isSubmitting ? 'Actualizando...' : 'Actualizar Bloqueo de Dirección' }}
       </button>

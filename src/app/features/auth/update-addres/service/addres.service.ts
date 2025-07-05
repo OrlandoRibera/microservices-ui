@@ -13,7 +13,7 @@ export class AddressService {
   private _http = inject(HttpClient);
 
   public addAddress(payload: AddAddressRequest): Promise<boolean> {
-    return firstValueFrom(this._http.post<boolean>(this._API_URL + 'api/client/address', payload));
+    return firstValueFrom(this._http.post<boolean>(this._API_URL + 'api/client/' + payload.IdClient + '/address', payload));
   }
 
   public listAddress(idUser: string): Promise<UserAddressByIDResponse> {
@@ -21,6 +21,8 @@ export class AddressService {
   }
 
   public updateBlockAddres(payload: UpdateBlockAddressRequest): Promise<boolean> {
-    return firstValueFrom(this._http.post<boolean>(this._API_URL + 'api/client/address/update-block-address', payload));
+    return firstValueFrom(
+      this._http.post<boolean>(this._API_URL + 'api/client/' + payload.idClient + '/addres/update-block-date', payload)
+    );
   }
 }

@@ -7,10 +7,10 @@ import { FoodPackage } from '../interfaces/food-package.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class GetFoodPackages {
+export class DispatchFoodPackage {
   private readonly _HTTP = inject(HttpClient);
 
-  public getFoodPackages(): Observable<FoodPackage[]> {
-    return this._HTTP.get<FoodPackage[]>(`/${ROUTES.CATERING}/catering/getAllPackages`);
+  public dispatch(id: string): Observable<FoodPackage> {
+    return this._HTTP.post<FoodPackage>(`/${ROUTES.CATERING}/catering/dispatchFoodPackage`, { id });
   }
 }

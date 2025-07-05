@@ -8,7 +8,7 @@
   "/api-catering": {
     "target": "http://localhost:8080",
     "pathRewrite": {
-      "^/api-catering": "/api/catering"
+      "^/api-catering": "/api"
     },
     "secure": false,
     "changeOrigin": true,

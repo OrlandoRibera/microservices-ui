@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NextRecipes } from '../interfaces/next-recipes.interface';
 import { ROUTES } from '../../../shared/constants/routes.constants';
-import { FoodPackage } from '../interfaces/food-package.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GetFoodPackages {
+export class GetNextRecipes {
   private readonly _HTTP = inject(HttpClient);
 
-  public getFoodPackages(): Observable<FoodPackage[]> {
-    return this._HTTP.get<FoodPackage[]>(`/${ROUTES.CATERING}/catering/getAllPackages`);
+  public getNextRecipes(): Observable<NextRecipes[]> {
+    return this._HTTP.get<NextRecipes[]>(`/${ROUTES.CATERING}/recipes`);
   }
 }

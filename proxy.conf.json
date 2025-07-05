@@ -11,7 +11,7 @@
     "changeOrigin": true,
     "logLevel": "debug",
     "pathRewrite": {
-      "^/api-catering": "/catering/api/catering"
+      "^/api-catering": "/catering/api"
     }
   },
   "/cordination": {

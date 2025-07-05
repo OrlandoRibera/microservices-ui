@@ -11,7 +11,7 @@ export class AppInsightsService {
   constructor() {
     this.appInsights = new ApplicationInsights({
       config: {
-        instrumentationKey: '',
+        instrumentationKey: 'ad3fb58f-dda7-486f-bea4-8bdd72d44f17',
         enableAutoRouteTracking: true,
         enableCorsCorrelation: true
       }

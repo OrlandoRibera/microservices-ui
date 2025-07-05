@@ -1,0 +1,20 @@
+<div class="nutritional-container">
+  <div class="nutritional-card">
+    <h1 class="nutritional-title">Appointments</h1>
+
+    <div *ngIf="isLoading" class="loading">Loading appointments...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <ul *ngIf="!isLoading && !error" class="plans-list">
+      <li *ngFor="let appointment of appointments" class="plan-item">
+        <strong>Client:</strong> {{ appointment.clientName }}<br />
+        <strong>Nutritionist:</strong> {{ appointment.nutritionistName }}<br />
+        <strong>Date:</strong> {{ appointment.date | date: 'short' }}<br />
+      </li>
+    </ul>
+
+    <button class="create-button" (click)="createAppointment()">Create New Appointment</button>
+  </div>
+
+  <app-create-appointment *ngIf="isCreatingAppointment" (closeModal)="handleModalClose($event)"></app-create-appointment>
+</div>

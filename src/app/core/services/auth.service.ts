@@ -40,5 +40,7 @@ export class AuthService {
   public clear() {
     localStorage.removeItem(this._TOKEN_KEY);
     localStorage.removeItem(this._TOKEN_EXP_KEY);
+    localStorage.removeItem(this._USER_ID);
+    localStorage.removeItem(this._USER_ROLE);
   }
 }

@@ -1,49 +1,59 @@
 <nav class="navbar rounded-0">
-  <div class="navbar-brand">
-    <a routerLink="/" routerLinkActive="active" aria-label="Home">
-      <i class="fas fa-home"></i>
-      <span class="navbar-title">Home</span>
-    </a>
-  </div>
-  <input type="checkbox" id="navbar-toggle" class="navbar-toggle" />
-  <label for="navbar-toggle" class="navbar-hamburger" aria-label="Toggle navigation">
-    <span></span>
-    <span></span>
-    <span></span>
-  </label>
-  <div class="navbar-links">
-    <a routerLink="/user" routerLinkActive="active" aria-label="Catering">
-      <i class="fa-solid fa-users"></i>
-      <span>Users</span>
-    </a>
-    @if (role === CLIENT_ROLE) {
-    <a routerLink="/user/address-list" routerLinkActive="active" aria-label="Direcciones">
-      <i class="fa-solid fa-users"></i>
-      <span>Address</span>
-    </a>
-    } @if (role === COOK_ROLE) {
-    <a routerLink="/catering" routerLinkActive="active" aria-label="Catering">
-      <i class="fa-solid fa-carrot"></i>
-      <span>Catering</span>
-    </a>
-    <a routerLink="/calendar" routerLinkActive="active" aria-label="Catering">
-      <i class="fa-solid fa-calendar-day"></i>
-      <span>Calendar</span>
-    </a>
-    } @if (role === DELIVERY_ROLE) {
-    <a routerLink="/delivery" routerLinkActive="active" aria-label="Catering">
-      <i class="fa-solid fa-truck"></i>
-      <span>Delivery</span>
-    </a>
-    } @if (role === NUTRITIONIST_ROLE) {
-    <a routerLink="/nutritional-plan" routerLinkActive="active" aria-label="Catering">
-      <i class="fa-solid fa-check"></i>
-      <span>Nutritional Plans</span>
-    </a>
-    <a routerLink="/appointment" routerLinkActive="active" aria-label="Catering">
-      <i class="fa-solid fa-calendar-check"></i>
-      <span>Appointments</span>
-    </a>
-    }
-  </div>
+    <div class="navbar-brand">
+        <a routerLink="/" routerLinkActive="active" aria-label="Home">
+            <i class="fas fa-home"></i>
+            <span class="navbar-title">Home</span>
+        </a>
+    </div>
+    <input type="checkbox" id="navbar-toggle" class="navbar-toggle">
+    <label for="navbar-toggle" class="navbar-hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <div class="navbar-links">
+        <a routerLink="/user" routerLinkActive="active" aria-label="Catering">
+            <i class="fa-solid fa-users"></i>
+            <span>Users</span>
+        </a>
+        @if (role === CLIENT_ROLE) {
+        <a routerLink="/user/address-list" routerLinkActive="active" aria-label="Direcciones">
+            <i class="fa-solid fa-users"></i>
+            <span>Address</span>
+        </a>
+        } @if (role === COOK_ROLE) {
+        <a routerLink="/catering" routerLinkActive="active" aria-label="Catering">
+            <i class="fa-solid fa-carrot"></i>
+            <span>Catering</span>
+        </a>
+        <a routerLink="/calendar" routerLinkActive="active" aria-label="Calendar">
+            <i class="fa-solid fa-calendar-day"></i>
+            <span>Calendar</span>
+        </a>
+        } @if (role === DELIVERY_ROLE) {
+        <a routerLink="/delivery" routerLinkActive="active" aria-label="Delivery">
+            <i class="fa-solid fa-truck"></i>
+            <span>Delivery</span>
+        </a>
+        } @if (role === NUTRITIONIST_ROLE) {
+        <a routerLink="/nutritional-plan" routerLinkActive="active" aria-label="Nutritional Plans">
+            <i class="fa-solid fa-check"></i>
+            <span>Nutritional Plans</span>
+        </a>
+        <a routerLink="/appointment" routerLinkActive="active" aria-label="Appointments">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Appointments</span>
+        </a>
+      }
+      @if (role === MANAGER_ROLE) {
+        <a routerLink="/payments" routerLinkActive="active" aria-label="Appointments">
+          <i class="fa-solid fa-money-bill-transfer"></i>
+          <span>Payments</span>
+        </a>
+      }
+        <a routerLink="/login" routerLinkActive="active" aria-label="Logout" (click)="logout()">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
 </nav>

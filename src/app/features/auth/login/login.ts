@@ -53,6 +53,8 @@ export class LoginComponent {
       this._router.navigate(['/nutritional-plan']);
     } else if (role === ROLES.COOK) {
       this._router.navigate(['/catering']);
+    } else if (role === ROLES.MANAGER) {
+      this._router.navigate(['/payments']);
     } else {
       this._router.navigate(['/login']);
     }

@@ -23,4 +23,8 @@ export class Navbar {
   constructor() {
     this.role = this._authService.getUserRole();
   }
+
+  public logout(): void {
+    this._authService.clear();
+  }
 }

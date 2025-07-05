@@ -1,0 +1,100 @@
+<div class="container py-4 px-3 bg-light rounded shadow-sm">
+  <h1 class="h4 mb-4 fw-bold text-primary border-bottom pb-2">Generate Payments</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="d-flex flex-column gap-3" autocomplete="off">
+    <div>
+      <label for="user" class="form-label fw-semibold">User</label>
+      <select id="user" class="form-select" formControlName="user" aria-label="Select a user">
+        <option value="" disabled selected>Select a user</option>
+        @for (user of users; track user.id) {
+        <option [value]="user.id">{{ user.fullName }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="contract" class="form-label fw-semibold">Contract</label>
+      <select
+        id="contract"
+        class="form-select"
+        formControlName="contract"
+        [disabled]="!contracts.length"
+        aria-label="Select a contract"
+      >
+        <option value="" disabled selected>Select a contract</option>
+        @for (contract of contracts; track contract.id) {
+        <option [value]="contract.id" [title]="contract.description">
+          {{ contract.description | slice:0:60 }} @if (contract.description.length > 60) {
+          <span>...</span>
+          } |
+          <span><strong>Total:</strong>{{contract.totalAmount}}</span>
+        </option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="order" class="form-label fw-semibold">Order</label>
+      <select id="order" class="form-select" formControlName="order" [disabled]="!orders.length" aria-label="Select an order">
+        <option value="" disabled selected>Select an order</option>
+        @for (order of orders; track order.id) {
+        <option [value]="order.id">Order #{{ order.id }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="paymentMethod" class="form-label fw-semibold">Payment Method</label>
+      <select
+        id="paymentMethod"
+        class="form-select"
+        formControlName="paymentMethod"
+        [disabled]="!paymentMethods.length"
+        aria-label="Select a payment method"
+      >
+        <option value="" disabled selected>Select a payment method</option>
+        @for (method of paymentMethods; track method.id) {
+        <option [value]="method.id">{{ method.label || method.name }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="priceAmount" class="form-label fw-semibold">Price Amount</label>
+      <input
+        id="priceAmount"
+        type="number"
+        class="form-control"
+        formControlName="priceAmount"
+        min="0.01"
+        step="0.01"
+        placeholder="Enter price"
+      />
+    </div>
+    <hr />
+    <div>
+      <label for="socialReason" class="form-label fw-semibold">Social Reason</label>
+      <input
+        id="socialReason"
+        type="text"
+        class="form-control"
+        formControlName="socialReason"
+        placeholder="Enter social reason"
+      />
+    </div>
+
+    <div>
+      <label for="nit" class="form-label fw-semibold">NIT</label>
+      <input id="nit" type="text" class="form-control" formControlName="nit" placeholder="Enter NIT" />
+    </div>
+
+    <div>
+      <label for="email" class="form-label fw-semibold">Email</label>
+      <input id="email" type="email" class="form-control" formControlName="email" placeholder="Enter email" />
+    </div>
+
+    <div class="text-end mt-3">
+      <button type="submit" class="btn btn-primary px-4" [disabled]="form.invalid">Submit</button>
+    </div>
+  </form>
+</div>

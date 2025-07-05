@@ -20,5 +20,10 @@ export const USERS_ROUTES: Routes = [
   {
     path: 'update-block-address',
     component: UpdateBlockAddress
+  },
+  {
+    path: '**',
+    redirectTo: 'create',
+    pathMatch: 'full'
   }
 ];

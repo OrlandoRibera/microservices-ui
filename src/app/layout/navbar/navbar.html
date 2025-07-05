@@ -26,24 +26,33 @@
       <i class="fa-solid fa-carrot"></i>
       <span>Catering</span>
     </a>
-    <a routerLink="/calendar" routerLinkActive="active" aria-label="Catering">
+    <a routerLink="/calendar" routerLinkActive="active" aria-label="Calendar">
       <i class="fa-solid fa-calendar-day"></i>
       <span>Calendar</span>
     </a>
     } @if (role === DELIVERY_ROLE) {
-    <a routerLink="/delivery" routerLinkActive="active" aria-label="Catering">
+    <a routerLink="/delivery" routerLinkActive="active" aria-label="Delivery">
       <i class="fa-solid fa-truck"></i>
       <span>Delivery</span>
     </a>
     } @if (role === NUTRITIONIST_ROLE) {
-    <a routerLink="/nutritional-plan" routerLinkActive="active" aria-label="Catering">
+    <a routerLink="/nutritional-plan" routerLinkActive="active" aria-label="Nutritional Plans">
       <i class="fa-solid fa-check"></i>
       <span>Nutritional Plans</span>
     </a>
-    <a routerLink="/appointment" routerLinkActive="active" aria-label="Catering">
+    <a routerLink="/appointment" routerLinkActive="active" aria-label="Appointments">
       <i class="fa-solid fa-calendar-check"></i>
       <span>Appointments</span>
     </a>
+    } @if (role === MANAGER_ROLE) {
+    <a routerLink="/payments" routerLinkActive="active" aria-label="Appointments">
+      <i class="fa-solid fa-money-bill-transfer"></i>
+      <span>Payments</span>
+    </a>
     }
+    <a routerLink="/login" routerLinkActive="active" aria-label="Logout" (click)="logout()">
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      <span>Logout</span>
+    </a>
   </div>
 </nav>

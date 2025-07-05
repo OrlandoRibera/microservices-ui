@@ -27,6 +27,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/appointment/appointment.routes').then((m) => m.APPOINTMENT_ROUTES)
   },
   {
+    path: 'payments',
+    loadChildren: () => import('./features/payments/payments.routes').then((m) => m.PAYMENTS_ROUTES)
+  },
+  {
     path: '**',
     redirectTo: 'login'
   }

@@ -55,6 +55,8 @@ export class LoginComponent {
       this._router.navigate(['/catering']);
     } else if (role === ROLES.CLIENT) {
       this._router.navigate(['/user/address-list']);
+    } else if (role === ROLES.MANAGER) {
+      this._router.navigate(['/payments']);
     } else {
       this._router.navigate(['/login']);
     }

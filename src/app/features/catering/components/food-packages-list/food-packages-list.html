@@ -1,0 +1,35 @@
+<section class="container mt-3 d-flex justify-content-between">
+  <h1>Food Packages</h1>
+  <button class="btn btn-primary">Add Food Package</button>
+</section>
+
+<div class="row row-cols-3 g-4 mt-1">
+  @if (foodPackages()) { @for (foodPackage of foodPackages(); track foodPackage.id) {
+  <div class="col d-flex justify-content-center">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted" title="Food package identifier"><small>{{ foodPackage.id }}</small></h6>
+        <h5 class="card-title">Client: {{ foodPackage.clientId }}</h5>
+        <p class="card-text badge bg-secondary">Current status: {{ foodPackage.status }}</p>
+        <hr />
+        <h6 class="card-subtitle mt-2">Food Items</h6>
+        @if (foodPackage.foods && foodPackage.foods.length > 0) {
+        <ul class="list-group list-group-flush">
+          @for (foodItem of foodPackage.foods; track foodItem.foodId) {
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>{{ foodItem.name }}</div>
+            <div>
+              <span class="badge bg-secondary" title="status">{{ foodItem.status }}</span>
+              <span class="badge bg-secondary" title="type">{{ foodItem.type }}</span>
+            </div>
+          </li>
+          }
+        </ul>
+        }
+      </div>
+    </div>
+  </div>
+  } } @else {
+  <div class="col w-100 text-center">...</div>
+  }
+</div>

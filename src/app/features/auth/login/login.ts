@@ -49,7 +49,7 @@ export class LoginComponent {
   }
 
   private _redirectAfterLogin(role: string) {
-    if (role === ROLES.NUTRITIONIST)  {
+    if (role === ROLES.NUTRITIONIST) {
       this._router.navigate(['/nutritional-plan']);
     } else if (role === ROLES.COOK) {
       this._router.navigate(['/catering']);

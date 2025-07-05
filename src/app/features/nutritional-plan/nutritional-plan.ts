@@ -25,14 +25,14 @@ export class NutritionalPlanComponent implements OnInit {
   }
 
   public loadPlans(): void {
-    const clientId = this._authService.getUserId();
-    if (!clientId) {
+    const nutritionistId = this._authService.getUserId();
+    if (!nutritionistId) {
       this.error = 'User ID is missing';
       return;
     }
 
     this.isLoading = true;
-    this._nutritionalPlanService.getPlansByClientId(clientId).subscribe({
+    this._nutritionalPlanService.getPlansByNutritionistId(nutritionistId).subscribe({
       next: (data) => {
         this.plans = data;
         this.isLoading = false;
@@ -43,5 +43,9 @@ export class NutritionalPlanComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  public createPlan() {
+    alert('This feature is not implemented yet.');
   }
 }

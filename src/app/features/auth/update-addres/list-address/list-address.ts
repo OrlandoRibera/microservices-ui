@@ -39,4 +39,14 @@ export class ListAddress implements OnInit {
   public addNewAddress() {
     this._router.navigateByUrl('/user/address-create');
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public editAddress(address: any) {
+    // Navegar al componente UpdateBlockAddress solo con el addressId
+    this._router.navigate(['/user/update-block-address'], {
+      queryParams: {
+        addressId: address.id
+      }
+    });
+  }
 }

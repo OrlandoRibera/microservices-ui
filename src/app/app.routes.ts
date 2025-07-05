@@ -23,6 +23,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/nutritional-plan/nutritional-plan.routes').then((m) => m.NUTRITIONAL_PLANS_ROUTES)
   },
   {
+    path: 'appointment',
+    loadChildren: () => import('./features/appointment/appointment.routes').then((m) => m.APPOINTMENT_ROUTES)
+  },
+  {
     path: '**',
     redirectTo: 'login'
   }

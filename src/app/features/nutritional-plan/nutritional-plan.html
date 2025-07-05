@@ -7,7 +7,8 @@
 
     <ul *ngIf="!isLoading && !error" class="plans-list">
       <li *ngFor="let plan of plans" class="plan-item">
-        <strong>Plan ID:</strong> {{ plan.id }}<br />
+        <strong>Client:</strong> {{ plan.clientName }}<br />
+        <strong>Nutritionist:</strong> {{ plan.nutritionistName }}<br />
         <strong>Details:</strong> {{ plan.planDetails }}<br />
         <strong>Delivered:</strong> {{ plan.delivered ? 'Yes' : 'No' }}<br />
       </li>
@@ -15,4 +16,9 @@
 
     <button class="create-button" (click)="createPlan()">Create New Nutritional Plan</button>
   </div>
+  
+  <app-create-nutritional-plan
+    *ngIf="isCreatingPlan"
+    (closeModal)="handleModalClose($event)"
+  ></app-create-nutritional-plan>
 </div>

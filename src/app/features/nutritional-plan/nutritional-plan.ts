@@ -4,17 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NutritionalPlanService } from './service/nutritional-plan.service';
 import { AuthService } from '../../core/services/auth.service';
 import { NutritionalPlanResponse } from './dto/nutritional-plan-response';
+import { CreateNutritionalPlanComponent } from "./components/create-nutritional-plan";
 
 @Component({
   selector: 'app-nutritional-plan',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, CreateNutritionalPlanComponent],
   templateUrl: './nutritional-plan.html',
   styleUrls: ['./nutritional-plan.scss']
 })
 export class NutritionalPlanComponent implements OnInit {
   public plans: NutritionalPlanResponse[] = [];
   public isLoading = false;
+  public isCreatingPlan = false;
   public error: string | null = null;
 
   private _nutritionalPlanService = inject(NutritionalPlanService);
@@ -45,7 +47,14 @@ export class NutritionalPlanComponent implements OnInit {
     });
   }
 
-  public createPlan() {
-    alert('This feature is not implemented yet.');
+  public createPlan(): void {
+    this.isCreatingPlan = true;
+  }
+
+  public handleModalClose(refresh: boolean): void {
+    this.isCreatingPlan = false;
+    if (refresh) {
+      this.loadPlans();
+    }
   }
 }

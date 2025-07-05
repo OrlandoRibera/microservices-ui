@@ -1,8 +1,9 @@
 export interface NutritionalPlanResponse {
   id: string;
   clientId: string;
+  clientName: string;
   nutritionistId: string;
-  // disable-next-line @typescript-eslint/no-explicit-any
+  nutritionistName: string;
   analysisResults: any[];
   planDetails: string;
   delivered: boolean;
